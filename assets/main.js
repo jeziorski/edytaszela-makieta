@@ -25,19 +25,19 @@
     }
 
     // Formularz w makiecie nie wysyła danych, pokazuje tylko komunikat
-    var form = document.querySelector('[data-mock-form]');
-    if (form) {
+    document.querySelectorAll('[data-mock-form]').forEach(function (form) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-            var status = document.getElementById('form-status');
+            var status = form.querySelector('.ff-message-success') || form.parentNode.querySelector('.ff-message-success');
             status.hidden = false;
+            status.setAttribute('tabindex', '-1');
             status.focus();
         });
-    }
+    });
 
     // Strona produktu: wybór wariantu zmienia cenę, koszyk w makiecie nie działa
     var vform = document.querySelector('[data-variant-form]');
@@ -69,4 +69,27 @@
     if (toc && window.matchMedia('(max-width: 1024px)').matches) {
         toc.removeAttribute('open');
     }
+    // Makieta: przełącznik wariantów kolorów (A obecny, B jasne tło, C jasne tło i rdzawy akcent)
+    (function () {
+        var root = document.documentElement;
+        var q = new URLSearchParams(location.search).get('wariant');
+        var saved = null;
+        try { saved = localStorage.getItem('wariant'); } catch (e) {}
+        var current = q || saved || 'a';
+        function apply(v) {
+            current = v;
+            if (v === 'a') { root.removeAttribute('data-wariant'); } else { root.setAttribute('data-wariant', v); }
+            try { localStorage.setItem('wariant', v); } catch (e) {}
+            bar.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.value === v)); });
+        }
+        var bar = document.createElement('div');
+        bar.className = 'wariant-switch';
+        bar.setAttribute('role', 'group');
+        bar.setAttribute('aria-label', 'Wariant kolorów makiety');
+        bar.innerHTML = '<span>Wariant kolorów:</span><button type="button" value="a">A</button><button type="button" value="b">B</button><button type="button" value="c">C</button>';
+        bar.addEventListener('click', function (e) { if (e.target.value) { apply(e.target.value); } });
+        document.body.appendChild(bar);
+        document.body.classList.add('has-wariant-switch');
+        apply(current);
+    })();
 })();

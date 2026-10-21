@@ -9,8 +9,8 @@
     <link rel="icon" href="img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+    <link rel="stylesheet" href="assets/style.css?v=2c">
 </head>
 <body>
 <a class="skip-link" href="#tresc">Przejdź do treści</a>
@@ -42,7 +42,8 @@
             <nav class="breadcrumbs" aria-label="Okruszki"><ol><li><a href="index.html">Strona główna</a></li><li aria-current="page">Kontakt</li></ol></nav>
             <span class="eyebrow">Kontakt</span>
             <h1>Zacznijmy <em>od rozmowy</em></h1>
-            <p class="lead">Masz pytanie? Chcesz porozmawiać o współpracy? Jestem tu, żeby słuchać, nie tylko mówić. Napisz albo zadzwoń.</p>
+            <p class="lead">Masz pytanie? Chcesz porozmawiać o współpracy? Jestem tu, żeby słuchać, nie tylko mówić. Napisz na WhatsAppie, zadzwoń albo zostaw wiadomość.</p>
+            <p><a class="link-arrow" href="#faq">Sprawdź najczęstsze pytania i odpowiedzi</a></p>
             </div>
         </div>
     </section>
@@ -59,6 +60,7 @@
                 </div>
                 <ul class="contact-list">
                     <li><a href="tel:+48691517628"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+48 691 517 628</a></li>
+                    <li><a href="https://wa.me/48691517628" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>WhatsApp</a></li>
                     <li><a href="mailto:kontakt@edytaszela.pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>kontakt@edytaszela.pl</a></li>
                 </ul>
                 <ul class="socials" aria-label="Media społecznościowe">
@@ -94,6 +96,7 @@
                                 <div class="ff-el-input--content">
                                     <select class="ff-el-form-control" id="ff_temat">
                                         <option value="">Wybierz temat</option>
+                                        <option>Program transformacyjny</option>
                                         <option>Strategia rozwoju firmy</option>
                                         <option>Mentoring 1:1</option>
                                         <option>Analiza DISC D3</option>
@@ -113,7 +116,15 @@
                                 <div class="ff-el-input--content">
                                     <div class="ff-el-form-check ff-el-tc">
                                         <input class="ff-el-form-check-input ff-el-form-check-checkbox" type="checkbox" id="ff_zgoda" required>
-                                        <label class="ff-el-form-check-label" for="ff_zgoda">Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na wiadomość. Szczegóły w <a href="https://edytaszela.pl/polityka-prywatnosci/">polityce prywatności</a>.</label>
+                                        <label class="ff-el-form-check-label" for="ff_zgoda">Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na wiadomość. Zapoznałam/zapoznałem się z <a href="https://edytaszela.pl/polityka-prywatnosci/">polityką prywatności</a> i <a href="https://edytaszela.pl/regulamin-sklepu-internetowego/">regulaminem</a>.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ff-el-group">
+                                <div class="ff-el-input--content">
+                                    <div class="ff-el-form-check">
+                                        <input class="ff-el-form-check-input ff-el-form-check-checkbox" type="checkbox" id="ff_newsletter" name="newsletter">
+                                        <label class="ff-el-form-check-label" for="ff_newsletter">Chcę otrzymywać newsletter: nowe wpisy, materiały i informacje o programie. Mogę wypisać się w każdej chwili.</label>
                                     </div>
                                 </div>
                             </div>
@@ -132,16 +143,65 @@
         <div class="container container--narrow">
             <div class="section-head">
                 <span class="eyebrow">Zanim napiszesz</span>
-                <h2 id="faq">Najczęstsze pytania</h2>
+                <h2 id="faq">Pytania i odpowiedzi</h2>
+                <p class="form__note">W makiecie odpowiedzi są skrócone. Na stronie wstawimy pełne teksty z obecnej zakładki FAQ.</p>
             </div>
             <div class="faq">
                 <details>
-                    <summary>Gdzie odbywają się sesje?</summary>
-                    <p>Sesje indywidualne odbywają się online. Warsztat wyjazdowy odbywa się w Beskidzie Niskim.</p>
+                    <summary>Jakie korzyści może przynieść współpraca?</summary>
+                    <p>Większa samoświadomość i jasność celów, lepsza efektywność Twoja i zespołu, rozwój przywództwa, rozwiązania bieżących wyzwań i wsparcie strategii firmy, także w pracy ze stresem.</p>
                 </details>
                 <details>
-                    <summary>Ile trwa jedna sesja?</summary>
-                    <p>Od 60 do 90 minut, w zależności od wybranej formy. Między sesjami dostajesz materiały i zadania.</p>
+                    <summary>Jakie metody wykorzystujesz w swojej pracy?</summary>
+                    <p>Łączę wiedzę biznesową i doświadczenie z prowadzenia firmy od 2008 roku z wewnętrznym prowadzeniem, intuicją, mentoringiem i doradztwem.</p>
+                </details>
+                <details>
+                    <summary>Jak wygląda proces współpracy?</summary>
+                    <p>Siedem etapów: konsultacja wstępna, analiza sytuacji, połączenie ze sobą, analiza faktów, plan działania, regularne sesje i podsumowanie.</p>
+                </details>
+                <details>
+                    <summary>Czy praca jest poufna?</summary>
+                    <p>Absolutnie tak. Wszystko, co omawiamy na spotkaniach, zostaje między nami.</p>
+                </details>
+                <details>
+                    <summary>Czy współpraca wymaga przygotowania?</summary>
+                    <p>Warto przemyśleć obecne wyzwania i cele. Gotowych odpowiedzi nie potrzebujesz, wypracujemy je razem.</p>
+                </details>
+                <details>
+                    <summary>Jak mogę umówić się na pierwsze spotkanie?</summary>
+                    <p>Napisz na WhatsAppie, zadzwoń, wyślij e-mail albo zostaw wiadomość w formularzu powyżej.</p>
+                </details>
+                <details>
+                    <summary>Ile trwa współpraca?</summary>
+                    <p>To zależy od celów: od kilku tygodni przy konkretnym temacie do kilku miesięcy przy planie długoterminowym. Program transformacyjny trwa trzy miesiące.</p>
+                </details>
+                <details>
+                    <summary>Co oznacza „wewnętrzne prowadzenie” i jak pracujemy z intuicją?</summary>
+                    <p>Intuicja to szybkie rozpoznanie, które wskazuje kierunek. Sprawdzamy je w realiach firmy, a każdą pracę kończymy planem działania.</p>
+                </details>
+                <details>
+                    <summary>Czy mogę skorzystać z jednorazowej konsultacji?</summary>
+                    <p>Tak. Sesja jednorazowa sprawdzi się przy konkretnym pytaniu, problemie albo szybkiej analizie sytuacji.</p>
+                </details>
+                <details>
+                    <summary>Czym zajmuje się konsultant biznesowy?</summary>
+                    <p>Wspiera przedsiębiorców, liderów i zespoły w rozwoju działalności, łącząc wiedzę biznesową, doświadczenie, coaching i mentoring.</p>
+                </details>
+                <details>
+                    <summary>Czym różni się coaching od mentoringu?</summary>
+                    <p>W coachingu zadaję pytania, a rozwiązania znajdujesz Ty. W mentoringu dzielę się wiedzą i doświadczeniem oraz podpowiadam konkretne kroki.</p>
+                </details>
+                <details>
+                    <summary>Czy współpraca jest odpowiednia dla małych firm i freelancerów?</summary>
+                    <p>Tak. Pracuję zarówno z większymi firmami, jak i z jednoosobowymi działalnościami.</p>
+                </details>
+                <details>
+                    <summary>Czy współpraca jest tylko online, czy możliwe są spotkania na żywo?</summary>
+                    <p>Możliwe są obie formy, zależnie od Twoich preferencji i lokalizacji.</p>
+                </details>
+                <details>
+                    <summary>Jakie branże obsługujesz?</summary>
+                    <p>Pracuję z klientami z różnych branż i dopasowuję podejście do ich specyfiki.</p>
                 </details>
             </div>
         </div>
@@ -153,7 +213,7 @@
         <div class="footer-grid">
             <div>
                 <img src="img/logo-cream.svg" alt="Edyta Szela" width="102" height="72" loading="lazy">
-                <p>Mentoring i strategia dla właścicielek firm. Intuicja i fakty w jednym procesie decyzji.</p>
+                <p>Mentoring i strategia dla przedsiębiorców i liderów. Łączę biznes, intuicję i świadomość.</p>
             </div>
             <div>
                 <h2>Strona</h2>
@@ -171,6 +231,7 @@
                 <h2>Kontakt</h2>
                 <ul>
                     <li><a href="tel:+48691517628">+48 691 517 628</a></li>
+                    <li><a href="https://wa.me/48691517628" target="_blank" rel="noopener">WhatsApp</a></li>
                     <li><a href="mailto:kontakt@edytaszela.pl">kontakt@edytaszela.pl</a></li>
                 </ul>
             </div>
@@ -190,6 +251,6 @@
         </div>
     </div>
 </footer>
-<script src="assets/main.js"></script>
+<script src="assets/main.js?v=2c"></script>
 </body>
 </html>

@@ -4,23 +4,35 @@
     var nav = document.getElementById('nav');
 
     if (toggle && nav) {
+        // Szuflada: tło, zamknięcie, Escape, inert reszty strony, powrót fokusu
+        var backdrop = document.createElement('div');
+        backdrop.className = 'nav-backdrop';
+        backdrop.hidden = true;
+        var close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'nav-close';
+        close.setAttribute('aria-label', 'Zamknij menu');
+        close.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+        nav.insertBefore(close, nav.firstChild);
+        nav.parentNode.insertBefore(backdrop, nav);
+        var rest = document.querySelectorAll('.skip-link, .mock-bar, main, footer, .site-header__logo');
         var setOpen = function (open) {
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-            toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
             nav.classList.toggle('is-open', open);
             document.body.classList.toggle('menu-open', open);
+            backdrop.hidden = !open;
+            rest.forEach(function (el) { el.inert = open; });
+            toggle.inert = open;
+            if (open) { setTimeout(function () { close.focus(); }, 60); } else { toggle.focus(); }
         };
-        toggle.addEventListener('click', function () {
-            setOpen(toggle.getAttribute('aria-expanded') !== 'true');
-        });
+        toggle.addEventListener('click', function () { setOpen(true); });
+        close.addEventListener('click', function () { setOpen(false); });
+        backdrop.addEventListener('click', function () { setOpen(false); });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-                setOpen(false);
-                toggle.focus();
-            }
+            if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setOpen(false);
         });
         window.addEventListener('resize', function () {
-            if (window.innerWidth > 880) setOpen(false);
+            if (window.innerWidth > 880 && toggle.getAttribute('aria-expanded') === 'true') setOpen(false);
         });
     }
 
@@ -69,27 +81,14 @@
     if (toc && window.matchMedia('(max-width: 1024px)').matches) {
         toc.removeAttribute('open');
     }
-    // Makieta: przełącznik wariantów kolorów (A obecny, B jasne tło, C jasne tło i rdzawy akcent)
-    (function () {
-        var root = document.documentElement;
-        var q = new URLSearchParams(location.search).get('wariant');
-        var saved = null;
-        try { saved = localStorage.getItem('wariant'); } catch (e) {}
-        var current = q || saved || 'a';
-        function apply(v) {
-            current = v;
-            if (v === 'a') { root.removeAttribute('data-wariant'); } else { root.setAttribute('data-wariant', v); }
-            try { localStorage.setItem('wariant', v); } catch (e) {}
-            bar.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.value === v)); });
-        }
-        var bar = document.createElement('div');
-        bar.className = 'wariant-switch';
-        bar.setAttribute('role', 'group');
-        bar.setAttribute('aria-label', 'Wariant kolorów makiety');
-        bar.innerHTML = '<span>Wariant kolorów:</span><button type="button" value="a">A</button><button type="button" value="b">B</button><button type="button" value="c">C</button>';
-        bar.addEventListener('click', function (e) { if (e.target.value) { apply(e.target.value); } });
-        document.body.appendChild(bar);
-        document.body.classList.add('has-wariant-switch');
-        apply(current);
-    })();
+
+    // FAQ: otwarte najwyżej jedno pytanie w grupie (zapas dla przeglądarek bez <details name>)
+    document.querySelectorAll('details[name]').forEach(function (d) {
+        d.addEventListener('toggle', function () {
+            if (!d.open) return;
+            document.querySelectorAll('details[name="' + d.getAttribute('name') + '"]').forEach(function (o) {
+                if (o !== d) o.open = false;
+            });
+        });
+    });
 })();

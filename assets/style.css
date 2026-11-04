@@ -118,13 +118,6 @@ p { margin: 0 0 1em; }
 .section--dark .lead { color: var(--on-dark-soft); }
 
 /* Pasek makiety */
-.mock-bar {
-    background: var(--ink);
-    color: #f1ece6;
-    font-size: .8125rem;
-    text-align: center;
-    padding: 8px var(--gutter);
-}
 
 /* Przyciski */
 .btn {
@@ -445,7 +438,10 @@ p { margin: 0 0 1em; }
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; position: absolute; right: 4px; top: 18px; font-size: 1.75rem; font-family: var(--font-body); font-weight: 300; }
-.faq details[open] summary::after { content: "\2212"; }
+.faq details { overflow-anchor: none; }
+.faq summary::after { transition: transform .52s cubic-bezier(.22,.61,.36,1); }
+.faq details.is-open summary::after, .faq details[open]:not(.is-open):not([data-grupa]) summary::after { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
 .faq details p { color: var(--ink-soft); padding-bottom: 20px; margin: 0; }
 
 /* Stopka */

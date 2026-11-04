@@ -15,7 +15,7 @@
         close.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
         nav.insertBefore(close, nav.firstChild);
         nav.parentNode.insertBefore(backdrop, nav);
-        var rest = document.querySelectorAll('.skip-link, .mock-bar, main, footer, .site-header__logo');
+        var rest = document.querySelectorAll('.skip-link, main, footer, .site-header__logo');
         var setOpen = function (open) {
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             nav.classList.toggle('is-open', open);
@@ -82,13 +82,53 @@
         toc.removeAttribute('open');
     }
 
-    // FAQ: otwarte najwyżej jedno pytanie w grupie (zapas dla przeglądarek bez <details name>)
-    document.querySelectorAll('details[name]').forEach(function (d) {
-        d.addEventListener('toggle', function () {
-            if (!d.open) return;
-            document.querySelectorAll('details[name="' + d.getAttribute('name') + '"]').forEach(function (o) {
-                if (o !== d) o.open = false;
-            });
+    // FAQ: animacja akordeonu (ten sam ruch co na danieljeziorski.pl: 520 ms, cubic-bezier(.22,.61,.36,1)).
+    // Otwarte najwyżej jedno pytanie w grupie. Bez JS działa natywne <details name>.
+    var ruchOk = function () { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
+    var faq = Array.prototype.slice.call(document.querySelectorAll('.faq details, details[name]'));
+    var stan = new Map();
+    faq.forEach(function (d) {
+        var grupa = d.getAttribute('name');
+        if (grupa) { d.dataset.grupa = grupa; d.removeAttribute('name'); }
+        stan.set(d, { ruch: null, cel: d.open });
+    });
+    var przelacz = function (d, otworz) {
+        var s = stan.get(d);
+        if (s.cel === otworz) { return; }
+        s.cel = otworz;
+        if (s.ruch) { var poprzedni = s.ruch; s.ruch = null; var od = d.getBoundingClientRect().height; poprzedni.cancel(); d.style.height = od + 'px'; }
+        if (!ruchOk() || !d.animate) { d.open = otworz; d.style.height = ''; d.style.overflow = ''; return; }
+        var start = d.getBoundingClientRect().height;
+        d.style.height = 'auto';
+        d.open = otworz;
+        var koniec = d.getBoundingClientRect().height;
+        d.open = true;
+        d.classList.toggle('is-open', otworz);
+        d.style.height = start + 'px';
+        d.style.overflow = 'hidden';
+        var r = d.animate([{ height: start + 'px' }, { height: koniec + 'px' }], { duration: 520, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'forwards' });
+        s.ruch = r;
+        r.onfinish = function () {
+            if (s.ruch !== r) { return; }
+            s.ruch = null;
+            d.open = otworz;
+            r.cancel();
+            d.style.height = '';
+            d.style.overflow = '';
+        };
+    };
+    faq.forEach(function (d) {
+        d.classList.toggle('is-open', d.open);
+        var summary = d.querySelector('summary');
+        if (!summary) { return; }
+        summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            var otworz = !stan.get(d).cel;
+            if (otworz && d.dataset.grupa) {
+                faq.forEach(function (o) { if (o !== d && o.dataset.grupa === d.dataset.grupa) { przelacz(o, false); } });
+            }
+            d.classList.toggle('is-open', otworz);
+            przelacz(d, otworz);
         });
     });
 })();

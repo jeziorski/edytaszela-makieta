@@ -738,3 +738,7 @@ p { margin: 0 0 1em; }
 @media (max-width: 780px) { .ofr__axis { font-size: .8125rem; } }
 .ofr__axis { grid-template-columns: 1.6fr 1fr .8fr; }
 .ofr__axis li { overflow-wrap: normal; }
+
+/* Kontakt: media społecznościowe jako ikony */
+.socials a { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; color: var(--green-900); }
+.socials a svg { width: 22px; height: 22px; display: block; }

@@ -82,6 +82,15 @@
         toc.removeAttribute('open');
     }
 
+    // Oferta: delikatne wejście elementów w panelach (bez JS wszystko jest widoczne)
+    var ofr = document.querySelector('.ofr');
+    if (ofr && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        ofr.setAttribute('data-ruch', '');
+        new IntersectionObserver(function (e, o) {
+            if (e[0].isIntersecting) { ofr.classList.add('is-in'); o.disconnect(); }
+        }, { threshold: .05 }).observe(ofr);
+    }
+
     // FAQ: animacja akordeonu (ten sam ruch co na danieljeziorski.pl: 520 ms, cubic-bezier(.22,.61,.36,1)).
     // Otwarte najwyżej jedno pytanie w grupie. Bez JS działa natywne <details name>.
     var ruchOk = function () { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; };

@@ -79,6 +79,8 @@ h1, h2, h3 {
 h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); }
 h2 { font-size: clamp(1.875rem, 3.6vw, 2.75rem); }
 h3 { font-size: clamp(1.1875rem, 2vw, 1.375rem); font-weight: 600; letter-spacing: -.01em; }
+/* Svietlana 01.11: wyróżnienie pisanym krojem w tym samym kolorze, bez nowego koloru */
+h1 em, h2 em, h3 em { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 1.12em; letter-spacing: 0; color: inherit; }
 p { margin: 0 0 1em; }
 
 .skip-link {
@@ -760,4 +762,23 @@ p { margin: 0 0 1em; }
     .ofr__cta { width: 100%; justify-content: center; }
     .ofr__bar { flex-direction: column; align-items: flex-start; padding: 22px; }
     .ofr__bar .btn { width: 100%; justify-content: center; }
+}
+
+/* Oferta: przejścia między ścieżkami */
+.ladder { margin-top: 48px; scroll-margin-top: 100px; }
+.ladder h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 20px; }
+.ladder__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid #dcdac8; border-radius: var(--radius-lg); overflow: hidden; }
+.ladder__list li { padding: 24px; border-right: 1px solid #dcdac8; }
+.ladder__list li:last-child { border-right: 0; }
+.ladder__list strong { display: block; margin-bottom: 6px; font-weight: 600; color: var(--green-900); }
+.ladder__list span { font-size: .9375rem; color: var(--ink-soft); }
+@media (max-width: 1024px) {
+    .ladder__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ladder__list li:nth-child(2n) { border-right: 0; }
+    .ladder__list li:nth-child(-n+2) { border-bottom: 1px solid #dcdac8; }
+}
+@media (max-width: 780px) {
+    .ladder__list { grid-template-columns: 1fr; }
+    .ladder__list li { border-right: 0; border-bottom: 1px solid #dcdac8; }
+    .ladder__list li:last-child { border-bottom: 0; }
 }

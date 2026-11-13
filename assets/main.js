@@ -15,7 +15,7 @@
         close.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
         nav.insertBefore(close, nav.firstChild);
         nav.parentNode.insertBefore(backdrop, nav);
-        var rest = document.querySelectorAll('.skip-link, main, footer, .site-header__logo');
+        var rest = document.querySelectorAll('.skip-link, main, footer, .site-header__logo, .buybar');
         var setOpen = function (open) {
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             nav.classList.toggle('is-open', open);
@@ -89,6 +89,109 @@
         new IntersectionObserver(function (e, o) {
             if (e[0].isIntersecting) { ofr.classList.add('is-in'); o.disconnect(); }
         }, { threshold: .05 }).observe(ofr);
+    }
+
+    // Tablica sciezek: gra z cyframi, dwa warianty do wyboru przez klientke.
+    // Domyslny: cyfry nad widoczna lista, przypisanie losowe przy kazdym wejsciu.
+    // ?gra=modal: lista ukryta, cyfra otwiera okno z jedna sciezka (przypisanie stale, 1-5 w kolejnosci listy).
+    // Bez JS blok gry jest ukryty, a lista zawsze widoczna.
+    var gra = document.querySelector('[data-gra]');
+    if (gra) {
+        var ofrGra = gra.closest('.ofr');
+        var komorki = Array.prototype.slice.call(gra.parentNode.querySelectorAll('.ofr__cell'));
+        var cyfry = Array.prototype.slice.call(gra.querySelectorAll('[data-cyfra]'));
+        var wynik = gra.querySelector('.ofr__wynik');
+        var trybModal = /(^|[?&])gra=modal(&|$)/.test(location.search) && typeof HTMLDialogElement === 'function';
+        var nazwaSciezki = function (cel) {
+            var n = cel.querySelector('.ofr__label').textContent.trim();
+            return n === 'Bezpłatnie' ? 'darmowy e-book' : n;
+        };
+        if (komorki.length === cyfry.length && !trybModal) {
+            var los = komorki.slice();
+            for (var i = los.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = los[i]; los[i] = los[j]; los[j] = t; }
+            gra.hidden = false;
+            cyfry.forEach(function (b, nr) {
+                b.setAttribute('aria-pressed', 'false');
+                b.addEventListener('click', function () {
+                    var cel = los[nr];
+                    var tytul = cel.querySelector('h3');
+                    cyfry.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+                    komorki.forEach(function (k) { k.classList.toggle('is-picked', k === cel); });
+                    wynik.textContent = 'Twoja cyfra ' + b.textContent + ' prowadzi do: ' + nazwaSciezki(cel) + '.';
+                    tytul.setAttribute('tabindex', '-1');
+                    cel.scrollIntoView({ block: 'start' });
+                    tytul.focus({ preventScroll: true });
+                });
+            });
+        }
+        if (komorki.length === cyfry.length && trybModal) {
+            ofrGra.classList.add('ofr--modal');
+            gra.hidden = false;
+            gra.querySelector('p').textContent = 'Wybierz cyfrę, która najbardziej Cię przyciąga. Pod każdą jest jedna ścieżka.';
+            var okno = document.createElement('dialog');
+            okno.className = 'ofr-okno';
+            okno.setAttribute('aria-labelledby', 'ofr-okno-tytul');
+            okno.innerHTML = '<div class="ofr-okno__gora"><p class="ofr-okno__cyfra" id="ofr-okno-tytul"></p><button type="button" class="ofr-okno__zamknij" aria-label="Zamknij okno"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="ofr-okno__tresc"></div><div class="ofr-okno__dol"><button type="button" class="btn btn--ghost btn--sm" data-inna>Wybierz inną cyfrę</button><button type="button" class="link-arrow ofr-okno__wszystkie" data-wszystkie>Pokaż wszystkie ścieżki</button></div>';
+            document.body.appendChild(okno);
+            var pokazWszystkie = document.createElement('button');
+            pokazWszystkie.type = 'button';
+            pokazWszystkie.className = 'link-arrow ofr__wszystkie';
+            pokazWszystkie.textContent = 'Wolę zobaczyć wszystkie ścieżki';
+            gra.appendChild(pokazWszystkie);
+            var odslon = function (cel) {
+                ofrGra.classList.remove('ofr--modal');
+                pokazWszystkie.hidden = true;
+                var doKogo = cel || komorki[0];
+                var tytul = doKogo.querySelector('h3');
+                tytul.setAttribute('tabindex', '-1');
+                doKogo.scrollIntoView({ block: 'start' });
+                tytul.focus({ preventScroll: true });
+            };
+            var ostatnia = null;
+            var ostatniCel = null;
+            cyfry.forEach(function (b, nr) {
+                b.addEventListener('click', function () {
+                    if (!ofrGra.classList.contains('ofr--modal')) {
+                        komorki.forEach(function (k) { k.classList.toggle('is-picked', k === komorki[nr]); });
+                        odslon(komorki[nr]);
+                        return;
+                    }
+                    ostatnia = b;
+                    ostatniCel = komorki[nr];
+                    var kopia = ostatniCel.cloneNode(true);
+                    kopia.removeAttribute('id');
+                    kopia.removeAttribute('aria-labelledby');
+                    kopia.classList.remove('is-picked');
+                    Array.prototype.forEach.call(kopia.querySelectorAll('[id]'), function (e) { e.removeAttribute('id'); });
+                    var numer = kopia.querySelector('.ofr__num');
+                    if (numer) { numer.remove(); }
+                    okno.querySelector('.ofr-okno__tresc').replaceChildren(kopia);
+                    okno.querySelector('.ofr-okno__cyfra').textContent = 'Twoja cyfra ' + b.textContent + ': ' + nazwaSciezki(ostatniCel);
+                    okno.showModal();
+                });
+            });
+            okno.querySelector('.ofr-okno__zamknij').addEventListener('click', function () { okno.close(); });
+            okno.querySelector('[data-inna]').addEventListener('click', function () { okno.close(); });
+            okno.querySelector('[data-wszystkie]').addEventListener('click', function () { okno.close('wszystkie'); });
+            okno.addEventListener('click', function (e) { if (e.target === okno) { okno.close(); } });
+            okno.addEventListener('close', function () {
+                if (okno.returnValue === 'wszystkie') { okno.returnValue = ''; odslon(ostatniCel); return; }
+                if (ostatnia) { ostatnia.focus(); }
+            });
+            pokazWszystkie.addEventListener('click', function () { odslon(null); });
+        }
+    }
+
+    // Strona produktu: pasek zakupu na telefonie chowa sie, gdy widac blok zakupu albo stopke
+    var buybar = document.querySelector('[data-buybar]');
+    if (buybar && 'IntersectionObserver' in window) {
+        var widoczne = new Set();
+        var cele = [document.querySelector(buybar.getAttribute('data-buybar')), document.querySelector('.site-footer')].filter(Boolean);
+        var obs = new IntersectionObserver(function (wpisy) {
+            wpisy.forEach(function (w) { if (w.isIntersecting) { widoczne.add(w.target); } else { widoczne.delete(w.target); } });
+            buybar.classList.toggle('is-hidden', widoczne.size > 0);
+        }, { threshold: 0 });
+        cele.forEach(function (c) { obs.observe(c); });
     }
 
     // FAQ: animacja akordeonu (ten sam ruch co na danieljeziorski.pl: 520 ms, cubic-bezier(.22,.61,.36,1)).

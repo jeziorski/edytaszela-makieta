@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
-    <link rel="stylesheet" href="assets/style.css?v=6">
+    <link rel="stylesheet" href="assets/style.css?v=19">
     <link rel="preload" as="image" href="img/edyta-hero.webp">
 </head>
 <body>
@@ -35,7 +35,7 @@
     </div>
 </header>
 
-<main id="tresc">
+<main id="tresc" tabindex="-1">
     <section class="hero">
         <div class="hero__deco" aria-hidden="true"></div>
         <div class="container hero__grid">
@@ -157,6 +157,16 @@
                             <p><strong>Edyta Szela</strong><span>Mentoring i strategia dla przedsiębiorców i liderów</span></p>
                         </div>
                     </div>
+                    <div class="ofr__pick" data-gra hidden>
+                        <div>
+                            <h3 id="gra-index">Nie wiesz, od czego zacząć? <em>Zaufaj intuicji</em></h3>
+                            <p>Wybierz cyfrę, która najbardziej Cię przyciąga. Każda prowadzi do jednej ścieżki.</p>
+                        </div>
+                        <div class="ofr__digits" role="group" aria-labelledby="gra-index">
+                            <button type="button" data-cyfra>1</button><button type="button" data-cyfra>2</button><button type="button" data-cyfra>3</button><button type="button" data-cyfra>4</button><button type="button" data-cyfra>5</button>
+                        </div>
+                        <p class="ofr__wynik" role="status" aria-live="polite"></p>
+                    </div>
                     <article class="ofr__cell" id="sciezka-ciekawosci" aria-labelledby="p-ciekawosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">01</span><div><span class="ofr__label">Ścieżka ciekawości</span><h3 id="p-ciekawosci">Pierwsze odkrycia i nowe perspektywy</h3><p>Poznawanie wybranych zagadnień bez presji i zobowiązań.</p></div></div>
                         <div class="ofr__panel ofr__panel--notes">
@@ -165,37 +175,37 @@
                             <span class="ofr__note ofr__a" style="--d:.4s;--r:-1deg">Moc wrażliwości</span>
                             <p class="ofr__panelnote">Minikursy po 1-1,5 godziny.</p>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#sciezka-ciekawosci">Zobacz ścieżkę</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#na-start">Zobacz minikursy</a></div>
                     </article>
                     <article class="ofr__cell" id="sciezka-zrozumienia" aria-labelledby="p-zrozumienia">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">02</span><div><span class="ofr__label">Ścieżka zrozumienia</span><h3 id="p-zrozumienia">Samodzielne zgłębianie wiedzy i refleksja</h3><p>Metodyczna praca we własnym tempie, pozwalająca lepiej rozumieć siebie i swoje działania.</p></div></div>
                         <div class="ofr__panel">
                             <ul class="ofr__mods">
-                                <li class="ofr__a" style="--d:0s;--k:8"><b>Kurs 1</b><i aria-hidden="true"></i><small>8 kroków</small></li>
-                                <li class="ofr__a" style="--d:.15s;--k:7"><b>Kurs 2</b><i aria-hidden="true"></i><small>7 kroków</small></li>
-                                <li class="ofr__a" style="--d:.3s;--k:5"><b>Kurs 3</b><i aria-hidden="true"></i><small>5 kroków</small></li>
+                                <li class="ofr__a" style="--d:0s;--k:8"><b>Intuicja</b><i aria-hidden="true"></i><small>moduł 1</small></li>
+                                <li class="ofr__a" style="--d:.15s;--k:8"><b>Świadomość</b><i aria-hidden="true"></i><small>moduł 2</small></li>
+                                <li class="ofr__a" style="--d:.3s;--k:8"><b>Wizja i Strategia</b><i aria-hidden="true"></i><small>moduł 3</small></li>
                             </ul>
-                            <p class="ofr__panelnote">Kursy to moduły Programu Iskra kupowane osobno. Sama wiedza, bez spotkań i bez czatu.</p>
+                            <p class="ofr__panelnote">Trzy kursy, czyli moduły Programu Iskra kupowane osobno. Sama wiedza, bez spotkań i bez czatu.</p>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#sciezka-zrozumienia">Zobacz ścieżkę</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#kursy">Zobacz kursy</a></div>
                     </article>
                     <article class="ofr__cell" id="sciezka-swiadomosci" aria-labelledby="p-swiadomosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">03</span><div><span class="ofr__label">Ścieżka świadomości</span><h3 id="p-swiadomosci">Łączenie intuicji, wiedzy i wspólnego doświadczenia</h3><p>Całościowy proces rozwoju, w którym samodzielnej pracy towarzyszy inspiracja i wsparcie grupy.</p></div></div>
                         <div class="ofr__panel">
-                            <ol class="ofr__flow"><li class="ofr__a" style="--d:0s">samoświadomość</li><li class="ofr__a" style="--d:.15s">intuicja</li><li class="ofr__a" style="--d:.3s">analiza</li></ol>
-                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>3 moduły jako całość</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>PDF, opcja drukowanego workbooka</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Czat i społeczność uczestników</span></li></ul>
+                            <ol class="ofr__flow"><li class="ofr__a" style="--d:0s">Intuicja</li><li class="ofr__a" style="--d:.15s">Świadomość</li><li class="ofr__a" style="--d:.3s">Wizja i Strategia</li></ol>
+                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Program Iskra, pakiet podstawowy</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Workbook w PDF</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Zamknięta grupa uczestników</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dostęp przez 12 miesięcy</span></li></ul>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#sciezka-swiadomosci">Zobacz ścieżkę</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="program-iskra-podstawowy.html">Zobacz pakiet podstawowy</a></div>
                     </article>
                     <article class="ofr__cell" id="sciezka-madrosci" aria-labelledby="p-madrosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">04</span><div><span class="ofr__label">Ścieżka wewnętrznej mądrości</span><h3 id="p-madrosci">Głęboka praca energetyczna i integracja doświadczeń</h3><p>Kameralna praca na żywo, pogłębiająca kontakt ze sobą i pozwalająca przenosić odkrycia do codziennego życia i biznesu.</p></div></div>
                         <div class="ofr__panel">
-                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Kurs</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Grupowe spotkania na żywo: pytania i odpowiedzi</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Warstwa wielowymiarowa, energetyczna (tylko za zgodą uczestnika)</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dodatkowy moduł o prowadzeniu biznesu i projektów, 1,5-2 godziny</span></li></ul>
+                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Program Iskra, pakiet pogłębiony: wszystko z podstawowego</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dodatkowy moduł o biznesie z poziomu prowadzenia i energii</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Spotkania online co tydzień przez 8 tygodni</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Workbook drukowany i notatnik refleksji</span></li></ul>
                             <p class="ofr__seats"><span aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Maksymalnie 12 osób</p>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="oferta.html#sciezka-madrosci">Zobacz ścieżkę</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="program-iskra-poglebiony.html">Zobacz pakiet pogłębiony</a></div>
                     </article>
-                    <article class="ofr__cell" aria-labelledby="p-ebook">
+                    <article class="ofr__cell" id="sciezka-ebook" aria-labelledby="p-ebook">
                         <div class="ofr__head"><span class="ofr__num ofr__num--plus" aria-hidden="true">+</span><div><span class="ofr__label">Bezpłatnie</span><h3 id="p-ebook">Potrzebujesz się zastanowić?</h3><p>Nie zawsze potrzebujesz dużo czasu, żeby odkryć coś wartościowego. Sięgnij po konkretną dawkę wiedzy i praktycznych ćwiczeń, które pomogą Ci od razu wprowadzić małe zmiany w codziennym życiu.</p></div></div>
                         <div class="ofr__panel ofr__panel--ebook">
                             <span class="ofr__book ofr__a" style="--d:0s"><small>Mini-przewodnik</small><b>Decyzje bez ciężaru</b><i></i><i></i><i></i></span>
@@ -353,6 +363,6 @@
         </div>
     </div>
 </footer>
-<script src="assets/main.js?v=6"></script>
+<script src="assets/main.js?v=14"></script>
 </body>
 </html>

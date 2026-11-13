@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
-    <link rel="stylesheet" href="assets/style.css?v=6">
+    <link rel="stylesheet" href="assets/style.css?v=19">
 </head>
 <body>
 <a class="skip-link" href="#tresc">Przejdź do treści</a>
@@ -34,7 +34,7 @@
     </div>
 </header>
 
-<main id="tresc">
+<main id="tresc" tabindex="-1">
     <section class="page-hero">
         <div class="container">
             <nav class="breadcrumbs" aria-label="Okruszki"><ol><li><a href="index.html">Edyta Szela</a></li><li aria-current="page">Oferta</li></ol></nav>
@@ -79,6 +79,16 @@
                             <p><strong>Edyta Szela</strong><span>Mentoring i strategia dla przedsiębiorców i liderów</span></p>
                         </div>
                     </div>
+                    <div class="ofr__pick" data-gra hidden>
+                        <div>
+                            <h3 id="gra-oferta">Nie wiesz, od czego zacząć? <em>Zaufaj intuicji</em></h3>
+                            <p>Wybierz cyfrę, która najbardziej Cię przyciąga. Każda prowadzi do jednej ścieżki.</p>
+                        </div>
+                        <div class="ofr__digits" role="group" aria-labelledby="gra-oferta">
+                            <button type="button" data-cyfra>1</button><button type="button" data-cyfra>2</button><button type="button" data-cyfra>3</button><button type="button" data-cyfra>4</button><button type="button" data-cyfra>5</button>
+                        </div>
+                        <p class="ofr__wynik" role="status" aria-live="polite"></p>
+                    </div>
                     <article class="ofr__cell" id="sciezka-ciekawosci" aria-labelledby="p-ciekawosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">01</span><div><span class="ofr__label">Ścieżka ciekawości</span><h3 id="p-ciekawosci">Pierwsze odkrycia i nowe perspektywy</h3><p>Poznawanie wybranych zagadnień bez presji i zobowiązań.</p><p class="ofr__more">Pierwszy krok nie musi prowadzić do dużych decyzji. Zatrzymaj się przy jednym, najbardziej interesującym Cię temacie i sprawdź, co dobrego odkryjesz dla siebie. To nie proces, a impuls rozwojowy i podstawa do wprowadzania zmian w danym zakresie.</p></div></div>
                         <div class="ofr__panel ofr__panel--notes">
@@ -93,31 +103,31 @@
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">02</span><div><span class="ofr__label">Ścieżka zrozumienia</span><h3 id="p-zrozumienia">Samodzielne zgłębianie wiedzy i refleksja</h3><p>Metodyczna praca we własnym tempie, pozwalająca lepiej rozumieć siebie i swoje działania.</p><p class="ofr__more">Nie musisz się spieszyć ani odkrywać wszystkiego naraz. Przechodź przez kolejne zagadnienia w swoim tempie, dając sobie przestrzeń na refleksję i głębsze zrozumienie. Lubisz pracować metodycznie i przechodzić przez kolejne zagadnienia, bo wiesz, że to uspokaja Twój umysł. Sprawdź, co odkryjesz, gdy pozwolisz sobie na spokojną, samodzielną pracę.</p></div></div>
                         <div class="ofr__panel">
                             <ul class="ofr__mods">
-                                <li class="ofr__a" style="--d:0s;--k:8"><b>Kurs 1</b><i aria-hidden="true"></i><small>8 kroków</small></li>
-                                <li class="ofr__a" style="--d:.15s;--k:7"><b>Kurs 2</b><i aria-hidden="true"></i><small>7 kroków</small></li>
-                                <li class="ofr__a" style="--d:.3s;--k:5"><b>Kurs 3</b><i aria-hidden="true"></i><small>5 kroków</small></li>
+                                <li class="ofr__a" style="--d:0s;--k:8"><b>Intuicja</b><i aria-hidden="true"></i><small>moduł 1</small></li>
+                                <li class="ofr__a" style="--d:.15s;--k:8"><b>Świadomość</b><i aria-hidden="true"></i><small>moduł 2</small></li>
+                                <li class="ofr__a" style="--d:.3s;--k:8"><b>Wizja i Strategia</b><i aria-hidden="true"></i><small>moduł 3</small></li>
                             </ul>
-                            <p class="ofr__panelnote">Kursy to moduły Programu Iskra kupowane osobno. Sama wiedza, bez spotkań i bez czatu.</p>
+                            <p class="ofr__panelnote">Trzy kursy, czyli moduły Programu Iskra kupowane osobno. Sama wiedza, bez spotkań i bez czatu.</p>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20pytam%20o%20%C5%9Bcie%C5%BCk%C4%99%20zrozumienia." target="_blank" rel="noopener">Zapytaj na WhatsAppie</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="#kursy">Zobacz kursy</a></div>
                     </article>
                     <article class="ofr__cell" id="sciezka-swiadomosci" aria-labelledby="p-swiadomosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">03</span><div><span class="ofr__label">Ścieżka świadomości</span><h3 id="p-swiadomosci">Łączenie intuicji, wiedzy i wspólnego doświadczenia</h3><p>Całościowy proces rozwoju, w którym samodzielnej pracy towarzyszy inspiracja i wsparcie grupy.</p><p class="ofr__more">Każdy krok na tej drodze pozwala Ci lepiej poznawać siebie, rozwijać intuicję i łączyć ją ze świadomą analizą. Odkrywaj kolejne zagadnienia we własnym tempie, czerpiąc inspirację i poczucie wspólnoty z obecności osób, które podobnie jak Ty szukają swojej drogi. To już nie jest tylko poziom wiedzy, praca odbywa się również głębiej.</p></div></div>
                         <div class="ofr__panel">
-                            <ol class="ofr__flow"><li class="ofr__a" style="--d:0s">samoświadomość</li><li class="ofr__a" style="--d:.15s">intuicja</li><li class="ofr__a" style="--d:.3s">analiza</li></ol>
-                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>3 moduły jako całość</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>PDF, opcja drukowanego workbooka</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Czat i społeczność uczestników</span></li></ul>
+                            <ol class="ofr__flow"><li class="ofr__a" style="--d:0s">Intuicja</li><li class="ofr__a" style="--d:.15s">Świadomość</li><li class="ofr__a" style="--d:.3s">Wizja i Strategia</li></ol>
+                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Program Iskra, pakiet podstawowy</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Workbook w PDF</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Zamknięta grupa uczestników</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dostęp przez 12 miesięcy</span></li></ul>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20pytam%20o%20%C5%9Bcie%C5%BCk%C4%99%20%C5%9Bwiadomo%C5%9Bci." target="_blank" rel="noopener">Zapytaj na WhatsAppie</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="program-iskra-podstawowy.html">Zobacz pakiet podstawowy</a></div>
                     </article>
                     <article class="ofr__cell" id="sciezka-madrosci" aria-labelledby="p-madrosci">
                         <div class="ofr__head"><span class="ofr__num" aria-hidden="true">04</span><div><span class="ofr__label">Ścieżka wewnętrznej mądrości</span><h3 id="p-madrosci">Głęboka praca energetyczna i integracja doświadczeń</h3><p>Kameralna praca na żywo, pogłębiająca kontakt ze sobą i pozwalająca przenosić odkrycia do codziennego życia i biznesu.</p><p class="ofr__more">Niektóre odkrycia potrzebują większej uważności i przestrzeni do rozmowy. W kameralnej grupie, podczas spotkań na żywo, możesz głębiej poznawać siebie i sprawdzać, jak nowe doświadczenia przekładają się na Twoje decyzje, biznes i realizowane projekty.</p></div></div>
                         <div class="ofr__panel">
-                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Kurs</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Grupowe spotkania na żywo: pytania i odpowiedzi</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Warstwa wielowymiarowa, energetyczna (tylko za zgodą uczestnika)</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dodatkowy moduł o prowadzeniu biznesu i projektów, 1,5-2 godziny</span></li></ul>
+                            <ul class="ofr__checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Program Iskra, pakiet pogłębiony: wszystko z podstawowego</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Dodatkowy moduł o biznesie z poziomu prowadzenia i energii</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Spotkania online co tydzień przez 8 tygodni</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><span>Workbook drukowany i notatnik refleksji</span></li></ul>
                             <p class="ofr__seats"><span aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Maksymalnie 12 osób</p>
                         </div>
-                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20pytam%20o%20%C5%9Bcie%C5%BCk%C4%99%20wewn%C4%99trznej%20m%C4%85dro%C5%9Bci." target="_blank" rel="noopener">Zapytaj na WhatsAppie</a></div>
+                        <div class="ofr__foot"><a class="btn btn--ghost ofr__cta" href="program-iskra-poglebiony.html">Zobacz pakiet pogłębiony</a></div>
                     </article>
-                    <article class="ofr__cell" aria-labelledby="p-ebook">
+                    <article class="ofr__cell" id="sciezka-ebook" aria-labelledby="p-ebook">
                         <div class="ofr__head"><span class="ofr__num ofr__num--plus" aria-hidden="true">+</span><div><span class="ofr__label">Bezpłatnie</span><h3 id="p-ebook">Potrzebujesz się zastanowić?</h3><p>Nie zawsze potrzebujesz dużo czasu, żeby odkryć coś wartościowego.</p><p class="ofr__more">Sięgnij po konkretną dawkę wiedzy i praktycznych ćwiczeń, które pomogą Ci od razu wprowadzić małe zmiany w codziennym życiu.</p></div></div>
                         <div class="ofr__panel ofr__panel--ebook">
                             <span class="ofr__book ofr__a" style="--d:0s"><small>Mini-przewodnik</small><b>Decyzje bez ciężaru</b><i></i><i></i><i></i></span>
@@ -136,8 +146,8 @@
                 <h3>Zaczynasz niżej, <em>przechodzisz wyżej</em></h3>
                 <ul class="ladder__list">
                     <li><strong>Z minikursu na kurs</strong><span>Po zakupie minikursu zobaczysz ofertę na kurs.</span></li>
-                    <li><strong>Z kursu na Ścieżkę świadomości</strong><span>Od jej ceny odejmujemy cenę kupionego kursu.</span></li>
-                    <li><strong>Ze świadomości na wewnętrzną mądrość</strong><span>Dopłacasz różnicę między cenami obu ścieżek.</span></li>
+                    <li><strong>Z kursu na Program Iskra</strong><span>Cena kupionego kursu zostaje odliczona od ceny pakietu.</span></li>
+                    <li><strong>Z pakietu podstawowego na pogłębiony</strong><span>Dopłacasz różnicę między cenami obu pakietów Programu Iskra.</span></li>
                     <li><strong>Dodatki przy zakupie</strong><span>Do kursu albo ścieżki możesz dodać badanie DISC D3 lub drukowany workbook.</span></li>
                 </ul>
             </div>
@@ -192,9 +202,9 @@
                 <li class="product-card"><span class="service__meta">Minikurs</span><h4>Budowanie zespołu na solidnych fundamentach</h4><p class="product-card__foot"><small>Cena</small>wkrótce</p></li>
                 <li class="product-card"><span class="service__meta">Minikurs</span><h4>Moc wrażliwości. Jak z niej korzystać?</h4><p class="product-card__foot"><small>Cena</small>wkrótce</p></li>
             </ul>
-            <h3 class="products__head">Kursy, czyli pojedyncze moduły Programu Iskra</h3>
+            <h3 class="products__head" id="kursy">Kursy, czyli pojedyncze moduły Programu Iskra</h3>
             <ul class="products">
-                <li class="product-card"><span class="service__meta">Kurs, 8 kroków</span><h4>Nazwa kursu wkrótce <small>(moduł 1 Programu Iskra)</small></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p></li><li class="product-card"><span class="service__meta">Kurs, 7 kroków</span><h4>Nazwa kursu wkrótce <small>(moduł 2 Programu Iskra)</small></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p></li><li class="product-card"><span class="service__meta">Kurs, 5 kroków</span><h4>Nazwa kursu wkrótce <small>(moduł 3 Programu Iskra)</small></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p></li>
+                <li class="product-card"><span class="service__meta">Kurs online, moduł 1 Programu Iskra</span><h4><a href="kurs-intuicja.html">Kurs Intuicja</a></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p><a class="link-arrow" href="kurs-intuicja.html" aria-label="Zobacz Kurs Intuicja">Zobacz kurs</a></li><li class="product-card"><span class="service__meta">Kurs online, moduł 2 Programu Iskra</span><h4><a href="kurs-swiadomosc.html">Kurs Świadomość</a></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p><a class="link-arrow" href="kurs-swiadomosc.html" aria-label="Zobacz Kurs Świadomość">Zobacz kurs</a></li><li class="product-card"><span class="service__meta">Kurs online, moduł 3 Programu Iskra</span><h4><a href="kurs-wizja-i-strategia.html">Kurs Wizja i Strategia</a></h4><p class="product-card__foot"><small>Cena robocza</small>ok. 400 zł</p><a class="link-arrow" href="kurs-wizja-i-strategia.html" aria-label="Zobacz Kurs Wizja i Strategia">Zobacz kurs</a></li>
             </ul>
         </div>
     </section>
@@ -314,7 +324,7 @@
                 </details>
                 <details name="faq">
                     <summary>Gdzie odbywa się Program Iskra i jak za niego zapłacę?</summary>
-                    <p>Program, zakup i płatności będą na platformie Zanfia. Do startu sprzedaży o ścieżki zapytasz na WhatsAppie.</p>
+                    <p>Program, zakup i płatności będą na platformie Zanfia. Na stronie kursu albo pakietu klikasz przycisk zakupu i przechodzisz do płatności. Do startu sprzedaży możesz zapytać na WhatsAppie.</p>
                 </details>
                 <details name="faq">
                     <summary>Czy mogę przejść na wyższą ścieżkę?</summary>
@@ -394,6 +404,6 @@
         </div>
     </div>
 </footer>
-<script src="assets/main.js?v=6"></script>
+<script src="assets/main.js?v=14"></script>
 </body>
 </html>

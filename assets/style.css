@@ -502,6 +502,9 @@ main:focus { outline: none; }
 
 /* Strona produktu (WooCommerce) */
 .product-hero { padding: 40px 0 88px; }
+/* Uwaga Edyty 15.11: mniejszy odstep miedzy gora strony produktu a pierwsza sekcja na bialym tle */
+.product-hero:has(+ .section:not(.section--alt):not(.section--sand):not(.section--dark)) { padding-bottom: 32px; }
+.product-hero + .section:not(.section--alt):not(.section--sand):not(.section--dark) { padding-top: 56px; }
 .product { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .product__media { position: sticky; top: 108px; }
 .product__media img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-xl); }

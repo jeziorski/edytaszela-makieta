@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
-    <link rel="stylesheet" href="assets/style.css?v=20">
+    <link rel="stylesheet" href="assets/style.css?v=21">
 </head>
 <body>
 <a class="skip-link" href="#tresc">Przejdź do treści</a>
@@ -37,7 +37,6 @@
 <main id="tresc" tabindex="-1">
     <section class="product-hero">
         <div class="container">
-            <nav class="breadcrumbs" aria-label="Okruszki"><ol><li><a href="index.html">Edyta Szela</a></li><li><a href="oferta.html">Oferta</a></li><li aria-current="page">Badanie DISC</li></ol></nav>
             <div class="product">
                 <div class="product__media">
                     <img src="img/disc.webp" alt="" width="768" height="768">
@@ -45,56 +44,72 @@
                 <div class="product__summary">
                     <span class="eyebrow">Badanie z raportem, bez konsultacji</span>
                     <h1 class="product__title">Badanie DISC i DISC D3 <em>z raportem</em></h1>
-                    <p class="product__price" aria-live="polite"><span data-price-display>od 185 zł</span></p>
-                    <p class="lead">Samo badanie z raportem. Wybierz wersję badania i długość raportu. Jeśli chcesz omówić wyniki ze mną, wybierz konsultację DISC D3.</p>
-
-                    <form class="variant-form" data-variant-form novalidate>
-                        <fieldset class="variants-picker">
-                            <legend>Wybierz badanie</legend>
-                            <label class="variant" for="badanie-1">
-                                <input type="radio" id="badanie-1" name="attribute_sesja" value="Badanie DISC D3 z pełnym raportem" data-price="490 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC D3 z pełnym raportem</span><span class="variant__price">490 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-2">
-                                <input type="radio" id="badanie-2" name="attribute_sesja" value="Badanie DISC D3 ze skróconym raportem" data-price="369 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC D3 ze skróconym raportem</span><span class="variant__price">369 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-3">
-                                <input type="radio" id="badanie-3" name="attribute_sesja" value="Badanie DISC D3 Sales z pełnym raportem (dla sprzedawców)" data-price="569 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC D3 Sales z pełnym raportem (dla sprzedawców)</span><span class="variant__price">569 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-4">
-                                <input type="radio" id="badanie-4" name="attribute_sesja" value="Badanie DISC D3 Sales ze skróconym raportem (dla sprzedawców)" data-price="429 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC D3 Sales ze skróconym raportem (dla sprzedawców)</span><span class="variant__price">429 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-5">
-                                <input type="radio" id="badanie-5" name="attribute_sesja" value="Badanie DISC z pełnym raportem" data-price="258 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC z pełnym raportem</span><span class="variant__price">258 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-6">
-                                <input type="radio" id="badanie-6" name="attribute_sesja" value="Badanie DISC ze skróconym raportem" data-price="229 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC ze skróconym raportem</span><span class="variant__price">229 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-7">
-                                <input type="radio" id="badanie-7" name="attribute_sesja" value="Badanie DISC Sales z pełnym raportem (dla sprzedawców)" data-price="369 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC Sales z pełnym raportem (dla sprzedawców)</span><span class="variant__price">369 zł</span></span>
-                            </label>
-                            <label class="variant" for="badanie-8">
-                                <input type="radio" id="badanie-8" name="attribute_sesja" value="Badanie DISC KIDS z pełnym raportem (dla dzieci)" data-price="185 zł">
-                                <span class="variant__body"><span class="variant__name">Badanie DISC KIDS z pełnym raportem (dla dzieci)</span><span class="variant__price">185 zł</span></span>
-                            </label>
-                        </fieldset>
-                        <p class="variant-form__error" id="variant-error" role="alert" hidden>Wybierz jedno badanie, żeby dodać je do koszyka.</p>
-                        <button class="btn btn--primary btn--block" type="submit">Dodaj do koszyka</button>
-                        <p class="form-status" id="cart-status" role="status" tabindex="-1" hidden>To makieta: zakup nie działa. Po wdrożeniu wybrane badanie przejdzie do płatności z nazwą i ceną.</p>
-                    </form>
-                    <p class="product__ask">Nie wiesz, które badanie wybrać? <a href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20mam%20pytanie%20o%20Badanie%20DISC." target="_blank" rel="noopener">Napisz na WhatsAppie</a></p>
+                    <p class="lead">Samo badanie z raportem. Jeśli chcesz omówić wyniki ze mną, wybierz konsultację DISC D3.</p>
+                    <div class="product__buy">
+                        <p class="product__price"><small>Cena</small>od 185 zł</p>
+                        <a class="btn btn--primary btn--block" href="#opcje">Wybierz badanie</a>
+                    </div>
+                    <ul class="product__facts">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Badanie online</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Raport pełny albo skrócony, zależnie od wersji</li>
+                    </ul>
+                    <p class="product__ask">Masz pytanie przed zakupem? <a href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20mam%20pytanie%20o%20Badanie%20DISC." target="_blank" rel="noopener">Napisz na WhatsAppie</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section section--alt" aria-labelledby="co-dalej">
+    <section class="section section--alt" id="opcje" aria-labelledby="o-opcje">
+        <div class="container">
+            <div class="section-head">
+                <h2 id="o-opcje">Wybierz <em>badanie</em></h2>
+                <p class="lead">Pięć wersji badania. Przy każdej wybierasz raport, a przycisk przenosi Cię prosto do płatności.</p>
+            </div>
+            <ul class="products opcje">
+                <li class="product-card opcja">
+                    <span class="service__meta">Badanie z raportem</span>
+                    <h3>Badanie DISC D3</h3>
+                    <ul class="opcja__kup">
+                        <li class="opcja__wiersz"><span>Pełny raport<strong>490 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+D3%2C+pe%C5%82ny+raport&amp;cena=490+z%C5%82" aria-label="Kup: Badanie DISC D3, pełny raport, 490 zł">Kup</a></li>
+                        <li class="opcja__wiersz"><span>Skrócony raport<strong>369 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+D3%2C+skr%C3%B3cony+raport&amp;cena=369+z%C5%82" aria-label="Kup: Badanie DISC D3, skrócony raport, 369 zł">Kup</a></li>
+                    </ul>
+                </li>
+                <li class="product-card opcja">
+                    <span class="service__meta">Dla sprzedawców</span>
+                    <h3>Badanie DISC D3 Sales</h3>
+                    <ul class="opcja__kup">
+                        <li class="opcja__wiersz"><span>Pełny raport<strong>569 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+D3+Sales%2C+pe%C5%82ny+raport&amp;cena=569+z%C5%82" aria-label="Kup: Badanie DISC D3 Sales, pełny raport, 569 zł">Kup</a></li>
+                        <li class="opcja__wiersz"><span>Skrócony raport<strong>429 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+D3+Sales%2C+skr%C3%B3cony+raport&amp;cena=429+z%C5%82" aria-label="Kup: Badanie DISC D3 Sales, skrócony raport, 429 zł">Kup</a></li>
+                    </ul>
+                </li>
+                <li class="product-card opcja">
+                    <span class="service__meta">Badanie z raportem</span>
+                    <h3>Badanie DISC</h3>
+                    <ul class="opcja__kup">
+                        <li class="opcja__wiersz"><span>Pełny raport<strong>258 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC%2C+pe%C5%82ny+raport&amp;cena=258+z%C5%82" aria-label="Kup: Badanie DISC, pełny raport, 258 zł">Kup</a></li>
+                        <li class="opcja__wiersz"><span>Skrócony raport<strong>229 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC%2C+skr%C3%B3cony+raport&amp;cena=229+z%C5%82" aria-label="Kup: Badanie DISC, skrócony raport, 229 zł">Kup</a></li>
+                    </ul>
+                </li>
+                <li class="product-card opcja">
+                    <span class="service__meta">Dla sprzedawców</span>
+                    <h3>Badanie DISC Sales</h3>
+                    <ul class="opcja__kup">
+                        <li class="opcja__wiersz"><span>Pełny raport<strong>369 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+Sales%2C+pe%C5%82ny+raport&amp;cena=369+z%C5%82" aria-label="Kup: Badanie DISC Sales, pełny raport, 369 zł">Kup</a></li>
+                    </ul>
+                </li>
+                <li class="product-card opcja">
+                    <span class="service__meta">Dla dzieci</span>
+                    <h3>Badanie DISC KIDS</h3>
+                    <ul class="opcja__kup">
+                        <li class="opcja__wiersz"><span>Pełny raport<strong>185 zł</strong></span><a class="btn btn--primary btn--sm" href="zanfia.html?produkt=Badanie+DISC+KIDS%2C+pe%C5%82ny+raport&amp;cena=185+z%C5%82" aria-label="Kup: Badanie DISC KIDS, pełny raport, 185 zł">Kup</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="form__note">Płatność na platformie kursowej. Nie wiesz, które badanie wybrać? <a href="https://wa.me/48691517628?text=Dzie%C5%84%20dobry%2C%20mam%20pytanie%20o%20Badanie%20DISC." target="_blank" rel="noopener">Napisz na WhatsAppie</a>.</p>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="co-dalej">
         <div class="container split split--top">
             <div>
                 <span class="eyebrow">Co dalej z wynikiem</span>
@@ -108,13 +123,13 @@
         </div>
     </section>
 
-    <section class="section" aria-labelledby="koniec">
+    <section class="section section--flush-top" aria-labelledby="koniec">
         <div class="container">
             <div class="cta-final on-dark">
                 <div>
                     <h2 id="koniec">Poznaj swój <em>styl działania</em></h2>
                     <p>Wybierz badanie albo napisz, jeśli chcesz dobrać je razem ze mną.</p>
-                    <a class="btn btn--light" href="#tresc">Wybierz badanie</a>
+                    <a class="btn btn--light" href="#opcje">Wybierz badanie</a>
                     <p class="cta-final__alt">Wolisz zacząć spokojniej? <a href="oferta.html#ebooki">Odbierz darmowy e-book „Decyzje bez ciężaru”</a></p>
                 </div>
                 <div class="cta-final__contact">
@@ -171,6 +186,6 @@
         </div>
     </div>
 </footer>
-<script src="assets/main.js?v=14"></script>
+<script src="assets/main.js?v=15"></script>
 </body>
 </html>

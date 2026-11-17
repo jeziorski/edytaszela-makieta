@@ -500,13 +500,14 @@ main:focus { outline: none; }
     .trust__list { justify-content: flex-start; }
 }
 
-/* Strona produktu (WooCommerce) */
+/* Strona produktu: landing, zakup przez link do platnosci w Zanfii */
 .product-hero { padding: 40px 0 88px; }
 /* Uwaga Edyty 15.11: mniejszy odstep miedzy gora strony produktu a pierwsza sekcja na bialym tle */
 .product-hero:has(+ .section:not(.section--alt):not(.section--sand):not(.section--dark)) { padding-bottom: 32px; }
 .product-hero + .section:not(.section--alt):not(.section--sand):not(.section--dark) { padding-top: 56px; }
 .product { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .product__media { position: sticky; top: 108px; }
+.product__summary { order: -1; }
 .product__media img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-xl); }
 .product__title { font-size: clamp(1.75rem, 2.9vw, 2.375rem); }
 .product__price { font-family: var(--font-body); font-weight: 600; font-size: 2.25rem; color: var(--green-900); margin-bottom: 16px; }
@@ -566,8 +567,6 @@ main:focus { outline: none; }
 .compare__cena th, .compare__cena td { border-bottom: 0; padding-bottom: 20px; }
 .compare__cena .is-current { border-radius: 0 0 16px 16px; }
 .compare__zakup { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 28px; }
-.compare__zakup .variant-form { display: contents; }
-.compare__zakup .form-status { order: 3; flex: 1 1 100%; max-width: 46rem; }
 @media (max-width: 640px) { .compare__zakup .btn { width: 100%; justify-content: center; } }
 .compare__tak, .compare__nie { display: inline-block; min-width: 3rem; padding: 3px 10px; border-radius: 999px; font-size: .8125rem; font-weight: 500; }
 .compare__tak { background: var(--green-900); color: #fff; }
@@ -584,28 +583,7 @@ main:focus { outline: none; }
     .compare__cena strong { font-size: 1.0625rem; white-space: normal; }
     .compare thead .is-current { border-radius: 12px 12px 0 0; }
 }
-.variant-form { margin: 32px 0 28px; display: grid; gap: 16px; }
-.variants-picker { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
-.variants-picker legend { font-weight: 500; color: var(--ink); margin-bottom: 12px; padding: 0; }
-.variant { display: block; cursor: pointer; }
-.variant input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.variant__body {
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    padding: 16px 20px 16px 52px; border: 1.5px solid #7c8065; border-radius: var(--radius-lg);
-    background: #fff; position: relative; transition: border-color .2s, background-color .2s;
-}
-.variant__body::before {
-    content: ""; position: absolute; left: 20px; top: 50%; width: 18px; height: 18px; margin-top: -9px;
-    border: 1.5px solid #7c8065; border-radius: 50%; background: #fff;
-}
-.variant:hover .variant__body { border-color: var(--green-900); }
-.variant input:checked + .variant__body { border-color: var(--green-900); background: var(--cream-100); box-shadow: inset 0 0 0 1px var(--green-900); }
-.variant input:checked + .variant__body::before { border-color: var(--green-900); background: radial-gradient(circle, var(--green-900) 0 5px, #fff 6px); }
-.variant input:focus-visible + .variant__body { outline: 3px solid var(--green-700); outline-offset: 3px; }
-.variant__name { font-size: 1rem; }
-.variant__price { font-family: var(--font-body); font-weight: 600; font-size: 1.3125rem; color: var(--green-900); white-space: nowrap; }
-.variant-form__error { margin: 0; color: #9b1c1c; font-size: .9375rem; }
-.variant-form__error[hidden], .form-status[hidden] { display: none; }
+.form-status[hidden] { display: none; }
 .form-status { margin: 0; padding: 16px 20px; border-radius: var(--radius); background: var(--cream-200); color: var(--green-900); }
 .btn--block { width: 100%; }
 .product__facts { list-style: none; margin: 0 0 20px; padding: 20px 0 0; border-top: 1px solid var(--line); display: grid; gap: 12px; font-size: .9375rem; color: var(--ink-soft); }
@@ -633,7 +611,6 @@ main:focus { outline: none; }
     .product-hero { padding: 24px 0 64px; }
     .services--3 { grid-template-columns: 1fr; }
     .iceberg { padding: 28px 20px; }
-    .variant__body { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 
 /* Blog: lista wpisów (układ jak blog danieljeziorski.pl) */
@@ -916,3 +893,18 @@ main:focus { outline: none; }
 /* Przy table-layout: fixed szerokosc kolumny wyznacza pierwszy wiersz */
 @media (max-width: 640px) { .compare thead td { width: 42%; } }
 @media (max-width: 360px) { .compare thead td { width: 40%; } .compare thead th { font-size: .6875rem; } .compare thead th small { font-size: .625rem; } .compare__opis td { font-size: .75rem; } .compare__cena strong { font-size: .9375rem; } }
+
+/* Karty opcji na stronach DISC: kazda opcja ma wlasny link do platnosci w Zanfii (zamiast wariantow i koszyka) */
+.opcja h3 { font: 600 1.125rem/1.3 var(--font-body); color: var(--green-900); margin: 0 0 20px; }
+.opcja__kup { list-style: none; margin: auto 0 0; padding: 0; display: grid; gap: 0; }
+.opcja__wiersz { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+.opcja__wiersz span { font-size: .875rem; color: var(--ink-soft); line-height: 1.3; }
+.opcja__wiersz strong { display: block; font-size: 1.375rem; font-weight: 600; color: var(--green-900); }
+.opcja__wiersz .btn { flex: none; min-height: 44px; }
+.opcje + .form__note { margin-top: 24px; }
+/* Pakiety: przycisk zakupu pod kolumna kazdego pakietu */
+.compare__cena th, .compare__cena td { padding-bottom: 8px; }
+.compare__kup th, .compare__kup td { border-bottom: 0; padding-top: 4px; padding-bottom: 24px; }
+.compare__kup .btn { min-height: 44px; }
+.compare .compare__kup .is-current { border-radius: 0 0 16px 16px; }
+.compare .compare__cena .is-current { border-radius: 0; }

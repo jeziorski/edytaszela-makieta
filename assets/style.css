@@ -908,3 +908,5 @@ main:focus { outline: none; }
 .compare__kup .btn { min-height: 44px; }
 .compare .compare__kup .is-current { border-radius: 0 0 16px 16px; }
 .compare .compare__cena .is-current { border-radius: 0; }
+/* Przypisy do zrodel liczb: bez rozpychania wiersza */
+sup { line-height: 0; }
